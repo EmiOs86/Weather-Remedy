@@ -1,0 +1,139 @@
+body {
+  margin: 0;
+  background: #faf1eb;
+}
+
+.container {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  width: 70%;
+  background-color: white;
+  border-radius: 4px;
+  padding-bottom: 20px;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto;
+  width: 25%;
+  padding: 8px 0;
+}
+
+.heading-city {
+  color: #cb732a;
+  text-align: center;
+  padding: 7px 0;
+  background-color: #faf1eb;
+  margin: 0 1%;
+  border-radius: 2px;
+}
+
+.header-button {
+  cursor: pointer;
+}
+
+.justify-content-md-center {
+  padding: 10px 0 0 0;
+}
+
+.btn-search {
+  background-color: #cb732a;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-search:hover {
+  background-color: #c38586;
+  color: white;
+}
+
+.display-city {
+  font-family: "Yeseva One", cursive;
+  font-size: 60px;
+  font-weight: 700;
+  text-align: center;
+  color: #e2bcbf;
+  text-transform: capitalize;
+}
+
+.display-date {
+  font-size: 20px;
+  font-weight: 300;
+  text-align: center;
+  color: #656768;
+}
+
+.display-description {
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  color: #656768;
+}
+
+.display-temp {
+  font-family: "Yeseva One", cursive;
+  font-size: 70px;
+  font-weight: 500;
+  text-align: center;
+  color: #e2bcbf;
+}
+
+.temp-fc-select {
+  font-size: 15px;
+  font-weight: 300;
+  color: #656768;
+  text-align: center;
+  position: relative;
+  top: -85px;
+  left: 85px;
+  text-decoration: none;
+}
+
+.display-icon {
+  font-size: 130px;
+  font-weight: 500;
+  text-align: center;
+  color: #e56a25;
+  margin-top: -50px;
+}
+
+.more-info {
+  text-align: center;
+  color: #656768;
+}
+
+hr {
+  display: block;
+  margin: 10px auto;
+  color: #656768;
+  size: 3px;
+  width: 95%;
+}
+
+.future-weather {
+  text-align: center;
+}
+
+.fw-icon {
+  font-size: 30px;
+  color: #a9b8c6;
+}
+
+.fw-details {
+  color: #656768;
+}
+
+.affirmation {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  margin-top: 20px;
+}
+
+.created-by {
+  color: #7184a1;
+  font-size: 14px;
+  text-align: center;
+  margin: 5px 0 20px 0;
+}
