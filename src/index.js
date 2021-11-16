@@ -99,6 +99,7 @@ function displayTemp(response) {
     "src",
     `https://openweathermap.org/img/wn/${icon}@2x.png`
   );
+  weatherIcon.setAttribute("alt", response.data.weather[0].main);
 }
 
 let form = document.querySelector("#searchCityForm");
@@ -146,6 +147,7 @@ function displayCurrentTemp(response) {
     "src",
     `https://openweathermap.org/img/wn/${icon}@2x.png`
   );
+  weatherIcon.setAttribute("alt", response.data.weather[0].main);
 }
 
 let current = document.querySelector("#current-weather-button");
@@ -205,6 +207,7 @@ function displayLATempF(response) {
     "src",
     `https://openweathermap.org/img/wn/${icon}@2x.png`
   );
+  weatherIcon.setAttribute("alt", response.data.weather[0].main);
 }
 
 let headerLA = document.querySelector("#los-angeles");
@@ -245,6 +248,7 @@ function displayNYTempF(response) {
     "src",
     `https://openweathermap.org/img/wn/${icon}@2x.png`
   );
+  weatherIcon.setAttribute("alt", response.data.weather[0].main);
 }
 
 let headerNY = document.querySelector("#new-york");
@@ -285,6 +289,7 @@ function displayLondonTempF(response) {
     "src",
     `https://openweathermap.org/img/wn/${icon}@2x.png`
   );
+  weatherIcon.setAttribute("alt", response.data.weather[0].main);
 }
 
 let headerLondon = document.querySelector("#london");
@@ -325,6 +330,7 @@ function displayParisTempF(response) {
     "src",
     `https://openweathermap.org/img/wn/${icon}@2x.png`
   );
+  weatherIcon.setAttribute("alt", response.data.weather[0].main);
 }
 
 let headerParis = document.querySelector("#paris");
@@ -365,6 +371,7 @@ function displayMilanTempF(response) {
     "src",
     `https://openweathermap.org/img/wn/${icon}@2x.png`
   );
+  weatherIcon.setAttribute("alt", response.data.weather[0].main);
 }
 
 let headerMilan = document.querySelector("#milan");
@@ -405,6 +412,7 @@ function displayBeijingTempF(response) {
     "src",
     `https://openweathermap.org/img/wn/${icon}@2x.png`
   );
+  weatherIcon.setAttribute("alt", response.data.weather[0].main);
 }
 
 let headerBeijing = document.querySelector("#beijing");
