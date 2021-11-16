@@ -92,6 +92,13 @@ function displayTemp(response) {
   let wind = Math.round(response.data.wind.speed);
   let displayWind = document.querySelector("#wind");
   displayWind.innerHTML = `${wind} mph`;
+
+  let weatherIcon = document.querySelector("#weather-icon");
+  let icon = response.data.weather[0].icon;
+  weatherIcon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${icon}@2x.png`
+  );
 }
 
 let form = document.querySelector("#searchCityForm");
@@ -132,6 +139,13 @@ function displayCurrentTemp(response) {
   let wind = Math.round(response.data.wind.speed);
   let displayWind = document.querySelector("#wind");
   displayWind.innerHTML = `${wind} mph`;
+
+  let weatherIcon = document.querySelector("#weather-icon");
+  let icon = response.data.weather[0].icon;
+  weatherIcon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${icon}@2x.png`
+  );
 }
 
 let current = document.querySelector("#current-weather-button");
@@ -184,6 +198,13 @@ function displayLATempF(response) {
   let wind = Math.round(response.data.wind.speed);
   let displayWind = document.querySelector("#wind");
   displayWind.innerHTML = `${wind} mph`;
+
+  let weatherIcon = document.querySelector("#weather-icon");
+  let icon = response.data.weather[0].icon;
+  weatherIcon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${icon}@2x.png`
+  );
 }
 
 let headerLA = document.querySelector("#los-angeles");
@@ -217,6 +238,13 @@ function displayNYTempF(response) {
   let wind = Math.round(response.data.wind.speed);
   let displayWind = document.querySelector("#wind");
   displayWind.innerHTML = `${wind} mph`;
+
+  let weatherIcon = document.querySelector("#weather-icon");
+  let icon = response.data.weather[0].icon;
+  weatherIcon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${icon}@2x.png`
+  );
 }
 
 let headerNY = document.querySelector("#new-york");
@@ -250,6 +278,13 @@ function displayLondonTempF(response) {
   let wind = Math.round(response.data.wind.speed);
   let displayWind = document.querySelector("#wind");
   displayWind.innerHTML = `${wind} mph`;
+
+  let weatherIcon = document.querySelector("#weather-icon");
+  let icon = response.data.weather[0].icon;
+  weatherIcon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${icon}@2x.png`
+  );
 }
 
 let headerLondon = document.querySelector("#london");
@@ -283,6 +318,13 @@ function displayParisTempF(response) {
   let wind = Math.round(response.data.wind.speed);
   let displayWind = document.querySelector("#wind");
   displayWind.innerHTML = `${wind} mph`;
+
+  let weatherIcon = document.querySelector("#weather-icon");
+  let icon = response.data.weather[0].icon;
+  weatherIcon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${icon}@2x.png`
+  );
 }
 
 let headerParis = document.querySelector("#paris");
@@ -316,6 +358,13 @@ function displayMilanTempF(response) {
   let wind = Math.round(response.data.wind.speed);
   let displayWind = document.querySelector("#wind");
   displayWind.innerHTML = `${wind} mph`;
+
+  let weatherIcon = document.querySelector("#weather-icon");
+  let icon = response.data.weather[0].icon;
+  weatherIcon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${icon}@2x.png`
+  );
 }
 
 let headerMilan = document.querySelector("#milan");
@@ -349,6 +398,13 @@ function displayBeijingTempF(response) {
   let wind = Math.round(response.data.wind.speed);
   let displayWind = document.querySelector("#wind");
   displayWind.innerHTML = `${wind} mph`;
+
+  let weatherIcon = document.querySelector("#weather-icon");
+  let icon = response.data.weather[0].icon;
+  weatherIcon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${icon}@2x.png`
+  );
 }
 
 let headerBeijing = document.querySelector("#beijing");

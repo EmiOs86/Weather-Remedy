@@ -90,12 +90,9 @@ body {
   text-decoration: none;
 }
 
-.display-icon {
-  font-size: 130px;
-  font-weight: 500;
+.weather-icon {
   text-align: center;
-  color: #e56a25;
-  margin-top: -50px;
+  margin-top: -60px;
 }
 
 .more-info {
