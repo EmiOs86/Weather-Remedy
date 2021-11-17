@@ -241,25 +241,42 @@ let headerBeijing = document.querySelector("#beijing");
 headerBeijing.addEventListener("click", displayBeijing);
 
 // Weather forecast
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayForecast(response) {
   let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
-  let days = ["Thur", "Fri", "Sat", "Sun", "Mon"];
 
   let forecastHTML = `<div class="row">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      ` <div class="col fw-details">
-          <div>${day}</div>
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        ` <div class="col fw-details">
+          <div>${formatDay(forecastDay.dt)}</div>
+          
           <img
-          src="http://openweathermap.org/img/wn/01d.png"
+          src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }.png"
           alt=""
         />
+        
           <div>
-          75°F | 50°F
+          <strong>${Math.round(forecastDay.temp.max)}°</strong> | ${Math.round(
+          forecastDay.temp.min
+        )}°
           </div>
         </div>`;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -268,6 +285,6 @@ function displayForecast(response) {
 
 function getForecast(coordinates) {
   let apiKey = "f5d7d1d7d37ecee1388843b10cda310d";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayForecast);
 }
