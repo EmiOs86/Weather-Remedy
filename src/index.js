@@ -100,6 +100,9 @@ form.addEventListener("submit", search);
 function displayTemp(response) {
   console.log(response);
 
+  let cityElement = document.querySelector("#display-search-city");
+  cityElement.innerHTML = response.data.name;
+
   let description = response.data.weather[0].main;
   let displayDescription = document.querySelector("#description");
   displayDescription.innerHTML = description;
