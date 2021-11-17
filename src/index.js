@@ -46,7 +46,6 @@ displayDate.innerHTML = `${day} ${month} ${date} ${hours}:${minutes}`;
 navigator.geolocation.getCurrentPosition(getCurrentLocation);
 
 function getCurrentLocation(position) {
-  console.log(position);
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let apiKey = "f5d7d1d7d37ecee1388843b10cda310d";
