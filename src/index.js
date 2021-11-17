@@ -53,8 +53,25 @@ function getCurrentLocation(position) {
   let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
 
-  axios.get(apiUrl).then(displayCurrentTemp);
+  axios.get(apiUrl).then(displayTemp);
 }
+
+// Current Button
+function getCurrentPosition() {
+  navigator.geolocation.getCurrentPosition(currentPosition);
+}
+
+function currentPosition(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let apiKey = "f5d7d1d7d37ecee1388843b10cda310d";
+  let units = "imperial";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayTemp);
+}
+
+let current = document.querySelector("#current-weather-button");
+current.addEventListener("click", getCurrentPosition);
 
 // Change Search City, Temperature & 4 data
 function search(event) {
@@ -76,6 +93,10 @@ function search(event) {
   }
 }
 
+let form = document.querySelector("#searchCityForm");
+form.addEventListener("submit", search);
+
+// Main function
 function displayTemp(response) {
   console.log(response);
 
@@ -105,59 +126,6 @@ function displayTemp(response) {
 
   currentTempFahrenheit = Math.round(response.data.main.temp);
 }
-
-let form = document.querySelector("#searchCityForm");
-form.addEventListener("submit", search);
-
-// Current Button
-function getCurrentPosition() {
-  navigator.geolocation.getCurrentPosition(currentPosition);
-}
-
-function currentPosition(position) {
-  let latitude = position.coords.latitude;
-  let longitude = position.coords.longitude;
-  let apiKey = "f5d7d1d7d37ecee1388843b10cda310d";
-  let units = "imperial";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
-  axios.get(apiUrl).then(displayCurrentTemp);
-}
-
-function displayCurrentTemp(response) {
-  console.log(response);
-  let city = response.data.name;
-  let displayCity = document.querySelector("#display-search-city");
-  displayCity.innerHTML = city;
-
-  let description = response.data.weather[0].main;
-  let displayDescription = document.querySelector("#description");
-  displayDescription.innerHTML = description;
-
-  let currentTempF = Math.round(response.data.main.temp);
-  let displayTempF = document.querySelector("#temperature");
-  displayTempF.innerHTML = currentTempF;
-
-  let humidity = response.data.main.humidity;
-  let displayHumidity = document.querySelector("#humidity");
-  displayHumidity.innerHTML = `${humidity}%`;
-
-  let wind = Math.round(response.data.wind.speed);
-  let displayWind = document.querySelector("#wind");
-  displayWind.innerHTML = `${wind} mph`;
-
-  let weatherIcon = document.querySelector("#weather-icon");
-  let icon = response.data.weather[0].icon;
-  weatherIcon.setAttribute(
-    "src",
-    `https://openweathermap.org/img/wn/${icon}@2x.png`
-  );
-  weatherIcon.setAttribute("alt", response.data.weather[0].main);
-
-  currentTempFahrenheit = Math.round(response.data.main.temp);
-}
-
-let current = document.querySelector("#current-weather-button");
-current.addEventListener("click", getCurrentPosition);
 
 //Temp FC Selector
 function showTempF() {
@@ -189,35 +157,7 @@ function displayLA(event) {
   let apiKey = "f5d7d1d7d37ecee1388843b10cda310d";
   let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
-  axios.get(apiUrl).then(displayLATempF);
-}
-
-function displayLATempF(response) {
-  let description = response.data.weather[0].main;
-  let displayDescription = document.querySelector("#description");
-  displayDescription.innerHTML = description;
-
-  let currentTempF = Math.round(response.data.main.temp);
-  let displayTempF = document.querySelector("#temperature");
-  displayTempF.innerHTML = currentTempF;
-
-  let humidity = response.data.main.humidity;
-  let displayHumidity = document.querySelector("#humidity");
-  displayHumidity.innerHTML = `${humidity}%`;
-
-  let wind = Math.round(response.data.wind.speed);
-  let displayWind = document.querySelector("#wind");
-  displayWind.innerHTML = `${wind} mph`;
-
-  let weatherIcon = document.querySelector("#weather-icon");
-  let icon = response.data.weather[0].icon;
-  weatherIcon.setAttribute(
-    "src",
-    `https://openweathermap.org/img/wn/${icon}@2x.png`
-  );
-  weatherIcon.setAttribute("alt", response.data.weather[0].main);
-
-  currentTempFahrenheit = Math.round(response.data.main.temp);
+  axios.get(apiUrl).then(displayTemp);
 }
 
 let headerLA = document.querySelector("#los-angeles");
@@ -232,35 +172,7 @@ function displayNY(event) {
   let apiKey = "f5d7d1d7d37ecee1388843b10cda310d";
   let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
-  axios.get(apiUrl).then(displayNYTempF);
-}
-
-function displayNYTempF(response) {
-  let description = response.data.weather[0].main;
-  let displayDescription = document.querySelector("#description");
-  displayDescription.innerHTML = description;
-
-  let currentTempF = Math.round(response.data.main.temp);
-  let displayTempF = document.querySelector("#temperature");
-  displayTempF.innerHTML = currentTempF;
-
-  let humidity = response.data.main.humidity;
-  let displayHumidity = document.querySelector("#humidity");
-  displayHumidity.innerHTML = `${humidity}%`;
-
-  let wind = Math.round(response.data.wind.speed);
-  let displayWind = document.querySelector("#wind");
-  displayWind.innerHTML = `${wind} mph`;
-
-  let weatherIcon = document.querySelector("#weather-icon");
-  let icon = response.data.weather[0].icon;
-  weatherIcon.setAttribute(
-    "src",
-    `https://openweathermap.org/img/wn/${icon}@2x.png`
-  );
-  weatherIcon.setAttribute("alt", response.data.weather[0].main);
-
-  currentTempFahrenheit = Math.round(response.data.main.temp);
+  axios.get(apiUrl).then(displayTemp);
 }
 
 let headerNY = document.querySelector("#new-york");
@@ -275,35 +187,7 @@ function displayLondon(event) {
   let apiKey = "f5d7d1d7d37ecee1388843b10cda310d";
   let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
-  axios.get(apiUrl).then(displayLondonTempF);
-}
-
-function displayLondonTempF(response) {
-  let description = response.data.weather[0].main;
-  let displayDescription = document.querySelector("#description");
-  displayDescription.innerHTML = description;
-
-  let currentTempF = Math.round(response.data.main.temp);
-  let displayTempF = document.querySelector("#temperature");
-  displayTempF.innerHTML = currentTempF;
-
-  let humidity = response.data.main.humidity;
-  let displayHumidity = document.querySelector("#humidity");
-  displayHumidity.innerHTML = `${humidity}%`;
-
-  let wind = Math.round(response.data.wind.speed);
-  let displayWind = document.querySelector("#wind");
-  displayWind.innerHTML = `${wind} mph`;
-
-  let weatherIcon = document.querySelector("#weather-icon");
-  let icon = response.data.weather[0].icon;
-  weatherIcon.setAttribute(
-    "src",
-    `https://openweathermap.org/img/wn/${icon}@2x.png`
-  );
-  weatherIcon.setAttribute("alt", response.data.weather[0].main);
-
-  currentTempFahrenheit = Math.round(response.data.main.temp);
+  axios.get(apiUrl).then(displayTemp);
 }
 
 let headerLondon = document.querySelector("#london");
@@ -318,35 +202,7 @@ function displayParis(event) {
   let apiKey = "f5d7d1d7d37ecee1388843b10cda310d";
   let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
-  axios.get(apiUrl).then(displayParisTempF);
-}
-
-function displayParisTempF(response) {
-  let description = response.data.weather[0].main;
-  let displayDescription = document.querySelector("#description");
-  displayDescription.innerHTML = description;
-
-  let currentTempF = Math.round(response.data.main.temp);
-  let displayTempF = document.querySelector("#temperature");
-  displayTempF.innerHTML = currentTempF;
-
-  let humidity = response.data.main.humidity;
-  let displayHumidity = document.querySelector("#humidity");
-  displayHumidity.innerHTML = `${humidity}%`;
-
-  let wind = Math.round(response.data.wind.speed);
-  let displayWind = document.querySelector("#wind");
-  displayWind.innerHTML = `${wind} mph`;
-
-  let weatherIcon = document.querySelector("#weather-icon");
-  let icon = response.data.weather[0].icon;
-  weatherIcon.setAttribute(
-    "src",
-    `https://openweathermap.org/img/wn/${icon}@2x.png`
-  );
-  weatherIcon.setAttribute("alt", response.data.weather[0].main);
-
-  currentTempFahrenheit = Math.round(response.data.main.temp);
+  axios.get(apiUrl).then(displayTemp);
 }
 
 let headerParis = document.querySelector("#paris");
@@ -361,35 +217,7 @@ function displayMilan(event) {
   let apiKey = "f5d7d1d7d37ecee1388843b10cda310d";
   let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
-  axios.get(apiUrl).then(displayMilanTempF);
-}
-
-function displayMilanTempF(response) {
-  let description = response.data.weather[0].main;
-  let displayDescription = document.querySelector("#description");
-  displayDescription.innerHTML = description;
-
-  let currentTempF = Math.round(response.data.main.temp);
-  let displayTempF = document.querySelector("#temperature");
-  displayTempF.innerHTML = currentTempF;
-
-  let humidity = response.data.main.humidity;
-  let displayHumidity = document.querySelector("#humidity");
-  displayHumidity.innerHTML = `${humidity}%`;
-
-  let wind = Math.round(response.data.wind.speed);
-  let displayWind = document.querySelector("#wind");
-  displayWind.innerHTML = `${wind} mph`;
-
-  let weatherIcon = document.querySelector("#weather-icon");
-  let icon = response.data.weather[0].icon;
-  weatherIcon.setAttribute(
-    "src",
-    `https://openweathermap.org/img/wn/${icon}@2x.png`
-  );
-  weatherIcon.setAttribute("alt", response.data.weather[0].main);
-
-  currentTempFahrenheit = Math.round(response.data.main.temp);
+  axios.get(apiUrl).then(displayTemp);
 }
 
 let headerMilan = document.querySelector("#milan");
@@ -404,35 +232,7 @@ function displayBeijing(event) {
   let apiKey = "f5d7d1d7d37ecee1388843b10cda310d";
   let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
-  axios.get(apiUrl).then(displayBeijingTempF);
-}
-
-function displayBeijingTempF(response) {
-  let description = response.data.weather[0].main;
-  let displayDescription = document.querySelector("#description");
-  displayDescription.innerHTML = description;
-
-  let currentTempF = Math.round(response.data.main.temp);
-  let displayTempF = document.querySelector("#temperature");
-  displayTempF.innerHTML = currentTempF;
-
-  let humidity = response.data.main.humidity;
-  let displayHumidity = document.querySelector("#humidity");
-  displayHumidity.innerHTML = `${humidity}%`;
-
-  let wind = Math.round(response.data.wind.speed);
-  let displayWind = document.querySelector("#wind");
-  displayWind.innerHTML = `${wind} mph`;
-
-  let weatherIcon = document.querySelector("#weather-icon");
-  let icon = response.data.weather[0].icon;
-  weatherIcon.setAttribute(
-    "src",
-    `https://openweathermap.org/img/wn/${icon}@2x.png`
-  );
-  weatherIcon.setAttribute("alt", response.data.weather[0].main);
-
-  currentTempFahrenheit = Math.round(response.data.main.temp);
+  axios.get(apiUrl).then(displayTemp);
 }
 
 let headerBeijing = document.querySelector("#beijing");
