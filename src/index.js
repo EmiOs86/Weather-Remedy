@@ -98,8 +98,6 @@ form.addEventListener("submit", search);
 
 // Main function
 function displayTemp(response) {
-  console.log(response);
-
   let cityElement = document.querySelector("#display-search-city");
   cityElement.innerHTML = response.data.name;
 
@@ -244,7 +242,6 @@ let headerBeijing = document.querySelector("#beijing");
 headerBeijing.addEventListener("click", displayBeijing);
 
 // Weather forecast
-
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
