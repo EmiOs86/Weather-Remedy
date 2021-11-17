@@ -437,3 +437,30 @@ function displayBeijingTempF(response) {
 
 let headerBeijing = document.querySelector("#beijing");
 headerBeijing.addEventListener("click", displayBeijing);
+
+// Weather forecast
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Thur", "Fri", "Sat", "Sun", "Mon"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      ` <div class="col fw-details">
+          <div>${day}</div>
+          <img
+          src="http://openweathermap.org/img/wn/01d.png"
+          alt=""
+        />
+          <div>
+          75°F | 50°C
+          </div>
+        </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+displayForecast();
