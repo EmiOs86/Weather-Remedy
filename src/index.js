@@ -125,6 +125,8 @@ function displayTemp(response) {
   weatherIcon.setAttribute("alt", response.data.weather[0].main);
 
   currentTempFahrenheit = Math.round(response.data.main.temp);
+
+  getForecast(response.data.coord);
 }
 
 //Temp FC Selector
@@ -239,7 +241,8 @@ let headerBeijing = document.querySelector("#beijing");
 headerBeijing.addEventListener("click", displayBeijing);
 
 // Weather forecast
-function displayForecast() {
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let days = ["Thur", "Fri", "Sat", "Sun", "Mon"];
 
@@ -254,7 +257,7 @@ function displayForecast() {
           alt=""
         />
           <div>
-          75°F | 50°C
+          75°F | 50°F
           </div>
         </div>`;
   });
@@ -263,4 +266,8 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
-displayForecast();
+function getForecast(coordinates) {
+  let apiKey = "f5d7d1d7d37ecee1388843b10cda310d";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
