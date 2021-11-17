@@ -53,7 +53,7 @@ function getCurrentLocation(position) {
   let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
 
-  axios.get(apiUrl).then(displayTemp);
+  axios.get(apiUrl).then(displayCurrentTemp);
 }
 
 // Current Button
@@ -67,11 +67,34 @@ function currentPosition(position) {
   let apiKey = "f5d7d1d7d37ecee1388843b10cda310d";
   let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
-  axios.get(apiUrl).then(displayTemp);
+  axios.get(apiUrl).then(displayCurrentTemp);
 }
 
 let current = document.querySelector("#current-weather-button");
 current.addEventListener("click", getCurrentPosition);
+
+function displayCurrentTemp(response) {
+  console.log(response);
+  let city = response.data.name;
+  let displayCity = document.querySelector("#display-search-city");
+  displayCity.innerHTML = city;
+
+  let description = response.data.weather[0].main;
+  let displayDescription = document.querySelector("#description");
+  displayDescription.innerHTML = description;
+
+  let currentTempF = Math.round(response.data.main.temp);
+  let displayTempF = document.querySelector("#temperature");
+  displayTempF.innerHTML = currentTempF;
+
+  let humidity = response.data.main.humidity;
+  let displayHumidity = document.querySelector("#humidity");
+  displayHumidity.innerHTML = `${humidity}%`;
+
+  let wind = Math.round(response.data.wind.speed);
+  let displayWind = document.querySelector("#wind");
+  displayWind.innerHTML = `${wind} mph`;
+}
 
 // Change Search City, Temperature & 4 data
 function search(event) {
