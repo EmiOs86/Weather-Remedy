@@ -46,11 +46,13 @@ displayDate.innerHTML = `${day} ${month} ${date} ${hours}:${minutes}`;
 navigator.geolocation.getCurrentPosition(getCurrentLocation);
 
 function getCurrentLocation(position) {
+  console.log(position);
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let apiKey = "f5d7d1d7d37ecee1388843b10cda310d";
   let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
+
   axios.get(apiUrl).then(displayCurrentTemp);
 }
 
@@ -100,6 +102,8 @@ function displayTemp(response) {
     `https://openweathermap.org/img/wn/${icon}@2x.png`
   );
   weatherIcon.setAttribute("alt", response.data.weather[0].main);
+
+  currentTempFahrenheit = Math.round(response.data.main.temp);
 }
 
 let form = document.querySelector("#searchCityForm");
@@ -148,6 +152,8 @@ function displayCurrentTemp(response) {
     `https://openweathermap.org/img/wn/${icon}@2x.png`
   );
   weatherIcon.setAttribute("alt", response.data.weather[0].main);
+
+  currentTempFahrenheit = Math.round(response.data.main.temp);
 }
 
 let current = document.querySelector("#current-weather-button");
@@ -156,7 +162,7 @@ current.addEventListener("click", getCurrentPosition);
 //Temp FC Selector
 function showTempF() {
   let showTempF = document.querySelector("#temperature");
-  showTempF.innerHTML = 68;
+  showTempF.innerHTML = currentTempFahrenheit;
 }
 
 let TempF = document.querySelector("#tempF");
@@ -166,8 +172,10 @@ function showTempC(event) {
   event.preventDefault();
   let showTempC = document.querySelector("#temperature");
   let tempC = showTempC.innerHTML;
-  showTempC.innerHTML = Math.round(((tempC - 32) * 5) / 9);
+  showTempC.innerHTML = Math.round(((currentTempFahrenheit - 32) * 5) / 9);
 }
+
+let currentTempFahrenheit = null;
 
 let TempC = document.querySelector("#tempC");
 TempC.addEventListener("click", showTempC);
@@ -208,6 +216,8 @@ function displayLATempF(response) {
     `https://openweathermap.org/img/wn/${icon}@2x.png`
   );
   weatherIcon.setAttribute("alt", response.data.weather[0].main);
+
+  currentTempFahrenheit = Math.round(response.data.main.temp);
 }
 
 let headerLA = document.querySelector("#los-angeles");
@@ -249,6 +259,8 @@ function displayNYTempF(response) {
     `https://openweathermap.org/img/wn/${icon}@2x.png`
   );
   weatherIcon.setAttribute("alt", response.data.weather[0].main);
+
+  currentTempFahrenheit = Math.round(response.data.main.temp);
 }
 
 let headerNY = document.querySelector("#new-york");
@@ -290,6 +302,8 @@ function displayLondonTempF(response) {
     `https://openweathermap.org/img/wn/${icon}@2x.png`
   );
   weatherIcon.setAttribute("alt", response.data.weather[0].main);
+
+  currentTempFahrenheit = Math.round(response.data.main.temp);
 }
 
 let headerLondon = document.querySelector("#london");
@@ -331,6 +345,8 @@ function displayParisTempF(response) {
     `https://openweathermap.org/img/wn/${icon}@2x.png`
   );
   weatherIcon.setAttribute("alt", response.data.weather[0].main);
+
+  currentTempFahrenheit = Math.round(response.data.main.temp);
 }
 
 let headerParis = document.querySelector("#paris");
@@ -372,6 +388,8 @@ function displayMilanTempF(response) {
     `https://openweathermap.org/img/wn/${icon}@2x.png`
   );
   weatherIcon.setAttribute("alt", response.data.weather[0].main);
+
+  currentTempFahrenheit = Math.round(response.data.main.temp);
 }
 
 let headerMilan = document.querySelector("#milan");
@@ -413,6 +431,8 @@ function displayBeijingTempF(response) {
     `https://openweathermap.org/img/wn/${icon}@2x.png`
   );
   weatherIcon.setAttribute("alt", response.data.weather[0].main);
+
+  currentTempFahrenheit = Math.round(response.data.main.temp);
 }
 
 let headerBeijing = document.querySelector("#beijing");
