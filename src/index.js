@@ -152,9 +152,6 @@ TempC.addEventListener("click", showTempC);
 
 // Header click Los Angeles
 function displayLA(event) {
-  let displayLA = document.querySelector("#display-search-city");
-  displayLA.innerHTML = "Los Angeles";
-
   let city = `los angeles`;
   let apiKey = "f5d7d1d7d37ecee1388843b10cda310d";
   let units = "imperial";
@@ -167,9 +164,6 @@ headerLA.addEventListener("click", displayLA);
 
 // Header click New York
 function displayNY(event) {
-  let displayNY = document.querySelector("#display-search-city");
-  displayNY.innerHTML = "New York";
-
   let city = `new york`;
   let apiKey = "f5d7d1d7d37ecee1388843b10cda310d";
   let units = "imperial";
@@ -182,9 +176,6 @@ headerNY.addEventListener("click", displayNY);
 
 // Header click London
 function displayLondon(event) {
-  let displayLondon = document.querySelector("#display-search-city");
-  displayLondon.innerHTML = "London";
-
   let city = `London`;
   let apiKey = "f5d7d1d7d37ecee1388843b10cda310d";
   let units = "imperial";
@@ -197,9 +188,6 @@ headerLondon.addEventListener("click", displayLondon);
 
 // Header click Paris
 function displayParis(event) {
-  let displayParis = document.querySelector("#display-search-city");
-  displayParis.innerHTML = "Paris";
-
   let city = `paris`;
   let apiKey = "f5d7d1d7d37ecee1388843b10cda310d";
   let units = "imperial";
@@ -212,9 +200,6 @@ headerParis.addEventListener("click", displayParis);
 
 // Header click Milan
 function displayMilan(event) {
-  let displayMilan = document.querySelector("#display-search-city");
-  displayMilan.innerHTML = "Milan";
-
   let city = `milan`;
   let apiKey = "f5d7d1d7d37ecee1388843b10cda310d";
   let units = "imperial";
@@ -227,9 +212,6 @@ headerMilan.addEventListener("click", displayMilan);
 
 // Header click Beijing
 function displayBeijing(event) {
-  let displayBeijing = document.querySelector("#display-search-city");
-  displayBeijing.innerHTML = "Beijing";
-
   let city = `beijing`;
   let apiKey = "f5d7d1d7d37ecee1388843b10cda310d";
   let units = "imperial";
