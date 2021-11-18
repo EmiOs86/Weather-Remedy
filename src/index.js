@@ -270,9 +270,14 @@ function displayForecast(response) {
         />
         
           <div>
-          <strong>${Math.round(forecastDay.temp.max)}°</strong> | ${Math.round(
+          <strong>${Math.round(forecastDay.temp.max)}°F</strong> | ${Math.round(
           forecastDay.temp.min
-        )}°
+        )}°F
+          </div>
+          <div>
+          <strong>${Math.round(
+            ((forecastDay.temp.max - 32) * 5) / 9
+          )}°C</strong> | ${Math.round(((forecastDay.temp.min - 32) * 5) / 9)}°C
           </div>
         </div>`;
     }
